@@ -22,7 +22,7 @@
 
     <groupId>dk.magnusjensen</groupId>
     <artifactId>dice-roller</artifactId>
-    <version>0.5</version>
+    <version>0.5.1</version>
 
     <name>Dice Roller</name>
     <description>A dice roll parser following the roll20 dice specification.</description>
