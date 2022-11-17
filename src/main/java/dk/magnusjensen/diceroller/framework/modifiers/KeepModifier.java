@@ -50,7 +50,7 @@ public class KeepModifier implements Modifier {
             droppedRolls.addAll(sortedRolls.subList(0, sortedRolls.size() - keepAmount));
         } else {
             keptRolls.addAll(sortedRolls.subList(0, keepAmount));
-            droppedRolls.addAll(sortedRolls.subList(keepAmount + 1, sortedRolls.size()));
+            droppedRolls.addAll(sortedRolls.subList(keepAmount, sortedRolls.size()));
         }
 
         return keptRolls;

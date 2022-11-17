@@ -17,16 +17,16 @@
 package dk.magnusjensen.diceroller;
 
 import dk.magnusjensen.diceroller.framework.nodes.Node;
-import dk.magnusjensen.diceroller.framework.nodes.Step;
-import dk.magnusjensen.diceroller.parser.Lexer;
-import dk.magnusjensen.diceroller.parser.Parser;
 
-import java.util.ArrayList;
-import java.util.List;
+import static dk.magnusjensen.diceroller.DiceRoller.parseDiceRoll;
 
-public class DiceRoller {
-    public static Node parseDiceRoll(String diceRoll) {
-        return new Parser(new Lexer(diceRoll).scanTokens()).term();
+public class Main {
+
+    public static void main(String[] args) {
+        Node node = parseDiceRoll("5d100kl3");
+        //Node node = parseDiceRoll("5d20k3");
+        System.out.println(node.evaluate());
+        System.out.println(node.createPrintableString());
+        System.out.println(node.createResultingString());
     }
-
 }
