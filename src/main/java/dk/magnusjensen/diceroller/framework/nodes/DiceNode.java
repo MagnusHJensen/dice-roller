@@ -21,6 +21,7 @@ import dk.magnusjensen.diceroller.framework.modifiers.Modifier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DiceNode implements Node {
 
@@ -46,6 +47,9 @@ public class DiceNode implements Node {
         for (int i = 0; i < this.numOfRolls; i++) {
             rolls.add(dice.roll());
         }
+
+        // Default rolls to ascending order.
+        rolls = rolls.stream().sorted().collect(Collectors.toList());
 
         this.rolls.addAll(rolls);
 
