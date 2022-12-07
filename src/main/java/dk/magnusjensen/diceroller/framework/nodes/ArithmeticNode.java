@@ -57,7 +57,7 @@ public class ArithmeticNode implements Node {
     public void getSteps(List<Step> steps) {
         leftSide.getSteps(steps);
         rightSide.getSteps(steps);
-        steps.add(new ArithmeticStep(operator, leftSideResult, rightSideResult));
+        steps.add(new ArithmeticStep(operator, leftSideResult, leftSide, rightSideResult, rightSide));
     }
 
 

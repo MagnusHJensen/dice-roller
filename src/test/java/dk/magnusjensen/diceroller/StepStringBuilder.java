@@ -18,6 +18,7 @@ package dk.magnusjensen.diceroller;
 
 import dk.magnusjensen.diceroller.framework.modifiers.KeepModifierStep;
 import dk.magnusjensen.diceroller.framework.nodes.ArithmeticStep;
+import dk.magnusjensen.diceroller.framework.nodes.DiceNode;
 import dk.magnusjensen.diceroller.framework.nodes.DiceStep;
 import dk.magnusjensen.diceroller.framework.nodes.Step;
 
@@ -28,6 +29,7 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class StepStringBuilder {
+    private static String DICE_STRING = "";
 
     public static String build(List<Step> steps) {
         List<String> strings = new ArrayList<>();
@@ -40,6 +42,8 @@ public class StepStringBuilder {
         });
 
         strings.add("13.4");
+
+        DICE_STRING = "";
 
         return String.join(" = ", strings);
     }
@@ -63,10 +67,16 @@ public class StepStringBuilder {
             }
         });
 
+        DICE_STRING = "DICE COMP HERE";
+
         return String.join(" -> ", modifierStrings);
     }
 
     private static String buildStep(ArithmeticStep arithmeticStep) {
-        return String.format("%.1f %s %.1f", arithmeticStep.getLeftSideResult(), arithmeticStep.getOperator().getSign(), arithmeticStep.getRightSideResult());
+        String leftSideString = arithmeticStep.getLeftSide() instanceof DiceNode ? DICE_STRING : String.format("%.1f", arithmeticStep.getLeftSideResult());
+        String rightSideString = arithmeticStep.getRightSide() instanceof DiceNode ? DICE_STRING : String.format("%.1f", arithmeticStep.getRightSideResult());
+
+
+        return String.format("%s %s %s", leftSideString, arithmeticStep.getOperator().getSign(), rightSideString);
     }
 }

@@ -22,7 +22,7 @@
 
     <groupId>dk.magnusjensen</groupId>
     <artifactId>dice-roller</artifactId>
-    <version>0.5.3</version>
+    <version>0.5.4</version>
 
     <name>Dice Roller</name>
     <description>A dice roll parser following the roll20 dice specification.</description>
@@ -137,6 +137,7 @@
                                 <arg>--pinentry-mode</arg>
                                 <arg>loopback</arg>
                             </gpgArguments>
+
                         </configuration>
                     </execution>
                 </executions>

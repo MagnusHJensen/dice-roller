@@ -17,16 +17,25 @@
 package dk.magnusjensen.diceroller;
 
 import dk.magnusjensen.diceroller.framework.nodes.Node;
+import dk.magnusjensen.diceroller.framework.nodes.Step;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static dk.magnusjensen.diceroller.DiceRoller.parseDiceRoll;
 
 public class Main {
 
     public static void main(String[] args) {
-        Node node = parseDiceRoll("5d100kl3");
+        Node node = parseDiceRoll("(5+3+2)+5d100kl3");
         //Node node = parseDiceRoll("5d20k3");
         System.out.println(node.evaluate());
         System.out.println(node.createPrintableString());
         System.out.println(node.createResultingString());
+
+        List<Step> nodes = new ArrayList<>();
+        node.getSteps(nodes);
+
+        System.out.println(StepStringBuilder.build(nodes));
     }
 }

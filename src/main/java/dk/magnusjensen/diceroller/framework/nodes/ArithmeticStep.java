@@ -21,12 +21,16 @@ import dk.magnusjensen.diceroller.framework.Operator;
 public class ArithmeticStep implements Step {
     private final Operator operator;
     private final float leftSideResult;
+    private final Node leftSide;
     private final float rightSideResult;
+    private final Node rightSide;
 
-    public ArithmeticStep(Operator operator, float leftSideResult, float rightSideResult) {
+    public ArithmeticStep(Operator operator, float leftSideResult, Node leftSide, float rightSideResult, Node rightSide) {
         this.operator = operator;
         this.leftSideResult = leftSideResult;
+        this.leftSide = leftSide;
         this.rightSideResult = rightSideResult;
+        this.rightSide = rightSide;
     }
 
     public Operator getOperator() {
@@ -37,7 +41,15 @@ public class ArithmeticStep implements Step {
         return leftSideResult;
     }
 
+    public Node getLeftSide() {
+        return leftSide;
+    }
+
     public float getRightSideResult() {
         return rightSideResult;
+    }
+
+    public Node getRightSide() {
+        return rightSide;
     }
 }
